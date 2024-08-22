@@ -1,0 +1,14 @@
+namespace: trino
+helm:
+  chart: charts/trino
+  releaseName: trino
+
+targetCustomizations:
+- name: prod
+  helm:
+    releaseName: trino-release
+    valuesFiles:
+      - values-prod.yaml
+  clusterSelector:
+    matchLabels:
+      env: prod
